@@ -1,5 +1,5 @@
 from enum import StrEnum
-from pydantic import BaseModel, PositiveInt
+from pydantic import BaseModel, Field, PositiveInt
 
 class HistoryType(StrEnum):
   INCOME = "INCOME"
@@ -12,8 +12,12 @@ class History(BaseModel):
   type: HistoryType
 
 class Wallet(BaseModel):
-  wallet_id: int
-  name: str
+  wallet_id: int = Field(..., ge=1)
+  name: str = Field(
+    ...,
+    pattern="^[a-zA-Z]+$",
+    description="Wallet name",
+  )
   histories: list[History]
 
 class CreateWalletRequest(BaseModel):
