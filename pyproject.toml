@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "webdbpress-v136-sample"
+version = "0.1.0"
+description = ""
+authors = ["ayumu-1212 <ayumuabe1434@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "0.100.0"
+uvicorn = {version = "0.22.0", extras = ["standard"]}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
