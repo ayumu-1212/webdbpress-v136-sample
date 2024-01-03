@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Header, Path, Query
+from .schemas import CreateWalletRequest, Wallet
 
 app = FastAPI()
 
@@ -10,9 +11,9 @@ def get_hello():
 def get_wallets() -> dict[str, int]:
   return {"wallet_id": 1}
 
-@app.post("/wallets")
-def post_wallets() -> dict[str, int]:
-  return {"wallet_id": 2}
+@app.post("/wallets", response_model=Wallet)
+def post_wallets(data: CreateWalletRequest) -> dict:
+  return {"wallet_id": 2, "name": data.name}
 
 @app.get("/wallets/meta")
 def get_wallet_meta() -> dict[str, dict[str, int]]:
