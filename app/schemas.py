@@ -1,4 +1,5 @@
 from enum import StrEnum
+from datetime import datetime
 from pydantic import BaseModel, Field, PositiveInt
 
 class HistoryType(StrEnum):
@@ -10,6 +11,7 @@ class History(BaseModel):
   name: str
   amount: PositiveInt
   type: HistoryType
+  history_at: datetime
 
 class Wallet(BaseModel):
   wallet_id: int = Field(..., ge=1)
